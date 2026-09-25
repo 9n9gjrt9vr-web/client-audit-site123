@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Аудит привлечения клиентов — найдём, где теряются ваши клиенты</title>
+  <meta
+    name="description"
+    content="Разбор привлечения клиентов для частной практики, услуг и небольших проектов. Целевая аудитория, конкуренты, предложение, каналы и путь клиента."
+  />
+
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f1e8;
+      color: #171717;
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #f5f1e8;
+      --paper: #fffdf8;
+      --ink: #171717;
+      --muted: #68645d;
+
+      --pink: #e9a9bb;
+      --pink-light: #f4d6df;
+
+      --green: #a8c6a0;
+      --green-dark: #50674e;
+
+      --yellow: #f2d66d;
+      --orange: #e9a15a;
+
+      --line: #d8d1c5;
+
+      --radius: 28px;
+      --radius-small: 16px;
+
+      --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+    }
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 500;
+      letter-spacing: -.04em;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--serif);
+    }
+
+    .serif {
+      font-family: var(--serif);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       NAV
+    ========================================================= */
+
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 24px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .logo-mark {
+      display: grid;
+      place-items: center;
+
+      width: 34px;
+      height: 34px;
+
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+
+      font-size: 17px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-link:hover {
+      color: var(--ink);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 92vh;
+      padding: 150px 0 90px;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr);
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+
+      font-size: clamp(56px, 7.2vw, 98px);
+      line-height: .93;
+      max-width: 850px;
+    }
+
+    .hero h1 em {
+      color: var(--green-dark);
+      font-style: italic;
+    }
+
+    .hero-text {
+      max-width: 620px;
+      margin-top: 32px;
+
+      font-size: 20px;
+      line-height: 1.5;
+      color: #4f4b45;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 54px;
+      padding: 0 24px;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      background: var(--ink);
+      color: white;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    /* Hero visual */
+
+    .hero-visual {
+      position: relative;
+      min-height: 540px;
+    }
+
+    .hero-card {
+      position: absolute;
+
+      width: min(410px, 90%);
+      aspect-ratio: .82;
+
+      right: 20px;
+      top: 20px;
+
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+
+      padding: 28px;
+
+      transform: rotate(4deg);
+
+      box-shadow:
+        0 30px 80px rgba(35, 30, 20, .08);
+    }
+
+    .hero-card-inner {
+      height: 100%;
+
+      border: 1px dashed #bdb5a8;
+      border-radius: 24px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      padding: 26px;
+    }
+
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-card-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+    }
+
+    .cat {
+      font-size: 40px;
+      transform: rotate(-7deg);
+    }
+
+    .funnel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .funnel-line {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .funnel-line:nth-child(1) {
+      width: 95%;
+      background: var(--pink-light);
+    }
+
+    .funnel-line:nth-child(2) {
+      width: 78%;
+      background: #e8eedf;
+    }
+
+    .funnel-line:nth-child(3) {
+      width: 61%;
+      background: #f7e9b7;
+    }
+
+    .funnel-line:nth-child(4) {
+      width: 43%;
+      background: #e8d7cd;
+    }
+
+    .hero-note {
+      position: absolute;
+
+      left: -35px;
+      bottom: 70px;
+
+      max-width: 220px;
+
+      padding: 18px 20px;
+
+      background: var(--yellow);
+      border-radius: 20px;
+
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.1;
+
+      transform: rotate(-7deg);
+
+      box-shadow: 0 15px 40px rgba(0,0,0,.08);
+    }
+
+    .hero-flower {
+      position: absolute;
+      right: -20px;
+      bottom: -10px;
+
+      font-size: 82px;
+      transform: rotate(13deg);
+    }
+
+    /* =========================================================
+       MARQUEE
+    ========================================================= */
+
+    .marquee {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+
+      overflow: hidden;
+      white-space: nowrap;
+
+      padding: 17px 0;
+
+      background: var(--pink-light);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 35px;
+
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee span {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================================================
+       PROBLEM
+    ========================================================= */
+
+    .problem {
+      background: var(--ink);
+      color: white;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .problem h2 {
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: .96;
+    }
+
+    .problem-intro {
+      margin-top: 25px;
+      max-width: 430px;
+      color: #aaa59e;
+      font-size: 17px;
+    }
+
+    .path {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .path-item {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 20px;
+
+      padding: 25px 0;
+
+      border-bottom: 1px solid #3b3b3b;
+    }
+
+    .path-number {
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid #666;
+      border-radius: 50%;
+
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .path-item h3 {
+      font-size: 23px;
+      margin-bottom: 7px;
+    }
+
+    .path-item p {
+      color: #999;
+      max-width: 500px;
+    }
+
+    .path-item.warning .path-number {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: var(--ink);
+    }
+
+    /* =========================================================
+       ANALYSIS
+    ========================================================= */
+
+    .section-heading {
+      max-width: 750px;
+      margin-bottom: 60px;
+    }
+
+    .section-heading h2 {
+      margin-top: 18px;
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: .98;
+    }
+
+    .section-heading p {
+      margin-top: 22px;
+      max-width: 650px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .analysis-item {
+      min-height: 250px;
+
+      padding: 27px;
+
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-small);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .analysis-item:hover {
+      transform: translateY(-6px) rotate(-.5deg);
+      box-shadow: 0 20px 45px rgba(30,25,15,.08);
+    }
+
+    .analysis-icon {
+      font-size: 32px;
+      margin-bottom: 55px;
+    }
+
+    .analysis-item h3 {
+      font-size: 22px;
+      margin-bottom: 9px;
+    }
+
+    .analysis-item p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================================================
+       WHO
+    ========================================================= */
+
+    .who {
+      background: #e8eedf;
+    }
+
+    .who-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .who h2 {
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: .98;
+    }
+
+    .who-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .who-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+
+      padding: 20px 0;
+
+      border-bottom: 1px solid rgba(23,23,23,.18);
+    }
+
+    .who-item span {
+      flex: 0 0 auto;
+      font-size: 18px;
+    }
+
+    .who-item p {
+      font-size: 18px;
+    }
+
+    /* =========================================================
+       PRICING
+    ========================================================= */
+
+    .pricing {
+      background: #fffdf8;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 30px;
+
+      border: 1px solid var(--line);
+      border-radius: 28px;
+
+      background: var(--bg);
+    }
+
+    .price-card.featured {
+      background: var(--ink);
+      color: white;
+
+      transform: translateY(-16px);
+
+      border-color: var(--ink);
+    }
+
+    .popular {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+
+      padding: 7px 11px;
+
+      border-radius: 999px;
+
+      background: var(--yellow);
+      color: var(--ink);
+
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .price-name {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .price {
+      margin: 18px 0 20px;
+
+      font-family: var(--serif);
+      font-size: 52px;
+      letter-spacing: -.05em;
+    }
+
+    .price-description {
+      min-height: 72px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .featured .price-description {
+      color: #aaa;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+
+      margin: 28px 0;
+      padding-top: 25px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .featured .features {
+      border-color: #3a3a3a;
+    }
+
+    .features li {
+      list-style: none;
+      display: flex;
+      gap: 9px;
+
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      font-weight: 800;
+    }
+
+    .result {
+      margin-top: auto;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      background: #ece6da;
+
+      font-size: 14px;
+    }
+
+    .featured .result {
+      background: #2c2c2c;
+    }
+
+    .result strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .price-button {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    /* =========================================================
+       PROCESS
+    ========================================================= */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-item {
+      min-height: 250px;
+      padding: 28px;
+
+      border-right: 1px solid var(--line);
+    }
+
+    .process-item:last-child {
+      border-right: 0;
+    }
+
+    .process-number {
+      font-family: var(--serif);
+      font-size: 46px;
+      color: var(--pink);
+    }
+
+    .process-item h3 {
+      margin-top: 45px;
+      font-size: 21px;
+    }
+
+    .process-item p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================================================
+       RESULT
+    ========================================================= */
+
+    .result-section {
+      position: relative;
+      overflow: hidden;
+
+      background: var(--pink-light);
+    }
+
+    .result-layout {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .result-section h2 {
+      font-size: clamp(50px, 7vw, 90px);
+      line-height: .92;
+    }
+
+    .result-section h2 em {
+      color: var(--green-dark);
+    }
+
+    .result-copy {
+      font-size: 19px;
+      color: #55504a;
+    }
+
+    .result-copy p + p {
+      margin-top: 20px;
+    }
+
+    .result-stamp {
+      display: grid;
+      place-items: center;
+
+      width: 300px;
+      height: 300px;
+
+      margin-left: auto;
+
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+
+      text-align: center;
+
+      transform: rotate(8deg);
+    }
+
+    .result-stamp span {
+      max-width: 190px;
+
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .result-stamp small {
+      display: block;
+      margin-top: 15px;
+
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      padding: 130px 0;
+
+      background: var(--green-dark);
+      color: white;
+
+      text-align: center;
+    }
+
+    .cta h2 {
+      max-width: 800px;
+      margin: 0 auto;
+
+      font-size: clamp(52px, 7vw, 92px);
+      line-height: .92;
+    }
+
+    .cta p {
+      max-width: 540px;
+      margin: 25px auto 0;
+
+      color: #d2d9cf;
+      font-size: 18px;
+    }
+
+    .cta .button {
+      margin-top: 35px;
+
+      background: white;
+      color: var(--ink);
+
+      border-color: white;
+    }
+
+    .cta-note {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #c3cdc0;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 30px 0;
+
+      background: var(--ink);
+      color: #999;
+
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 125px 0 70px;
+      }
+
+      .hero-grid,
+      .problem-grid,
+      .who-layout,
+      .result-layout {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 15vw, 76px);
+      }
+
+      .hero-text {
+        font-size: 18px;
+      }
+
+      .hero-visual {
+        min-height: 480px;
+      }
+
+      .hero-card {
+        right: 0;
+      }
+
+      .hero-note {
+        left: 0;
+      }
+
+      .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.featured {
+        transform: none;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .process-item:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .result-stamp {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .hero-card {
+        width: 88%;
+        right: 2%;
+      }
+
+      .hero-note {
+        max-width: 170px;
+        font-size: 17px;
+        bottom: 20px;
+      }
+
+      .hero-flower {
+        font-size: 55px;
+      }
+
+      .analysis-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .analysis-item {
+        min-height: auto;
+      }
+
+      .analysis-icon {
+        margin-bottom: 35px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-item {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        min-height: auto;
+      }
+
+      .process-item:last-child {
+        border-bottom: 0;
+      }
+
+      .process-item h3 {
+        margin-top: 25px;
+      }
+
+      .result-stamp {
+        width: 240px;
+        height: 240px;
+      }
+
+      .result-stamp span {
+        font-size: 25px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       NAV
+  ========================================================== -->
+
+  <header class="nav">
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        <span class="logo-mark">✦</span>
+        АУДИТ
+      </a>
+
+      <a href="#pricing" class="nav-link">
+        Форматы и стоимость →
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- =========================================================
+       HERO
+  ========================================================== -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div class="hero-copy reveal">
+
+          <span class="eyebrow">
+            Аудит привлечения клиентов
+          </span>
+
+          <h1>
+            Где вы
+            <em>теряете</em>
+            клиентов?
+          </h1>
+
+          <p class="hero-text">
+            Разберём ваше дело, найдём слабые места в привлечении
+            и определим, что конкретно стоит изменить,
+            чтобы перестать действовать вслепую.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#pricing" class="button">
+              Выбрать формат →
+            </a>
+
+            <a href="#analysis" class="button secondary">
+              Что я анализирую
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual reveal">
+
+          <div class="hero-card">
+
+            <div class="hero-card-inner">
+
+              <div class="hero-card-top">
+
+                <div class="hero-card-label">
+                  путь клиента / 01
+                </div>
+
+                <div class="cat">
+                  🐈
+                </div>
+
+              </div>
+
+
+              <div class="funnel">
+
+                <div class="funnel-line">
+                  УВИДЕЛ
+                </div>
+
+                <div class="funnel-line">
+                  ЗАИНТЕРЕСОВАЛСЯ
+                </div>
+
+                <div class="funnel-line">
+                  РЕШИЛ
+                </div>
+
+                <div class="funnel-line">
+                  КУПИЛ
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div class="hero-card-label">
+                  иногда проблема
+                </div>
+
+                <p class="serif" style="font-size:27px; line-height:1.05; margin-top:8px;">
+                  не в продукте.
+                  <br />
+                  А в пути к нему.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-note">
+            Давайте найдём,
+            где именно
+            всё ломается.
+          </div>
+
+          <div class="hero-flower">
+            🌼
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         MARQUEE
+    ======================================================== -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span>целевая аудитория</span>
+        <span>✦</span>
+        <span>конкуренты</span>
+        <span>✦</span>
+        <span>позиционирование</span>
+        <span>✦</span>
+        <span>каналы</span>
+        <span>✦</span>
+        <span>путь клиента</span>
+        <span>✦</span>
+
+        <span>целевая аудитория</span>
+        <span>✦</span>
+        <span>конкуренты</span>
+        <span>✦</span>
+        <span>позиционирование</span>
+        <span>✦</span>
+        <span>каналы</span>
+        <span>✦</span>
+        <span>путь клиента</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================================
+         PROBLEM
+    ======================================================== -->
+
+    <section class="section problem">
+
+      <div class="container problem-grid">
+
+        <div class="reveal">
+
+          <span class="eyebrow">
+            Иногда всё начинается здесь
+          </span>
+
+          <h2 style="margin-top:22px;">
+            Клиенты
+            исчезают
+            по дороге.
+          </h2>
+
+          <p class="problem-intro">
+            Вы можете иметь хороший продукт, адекватную цену
+            и действительно помогать людям — но потенциальный
+            клиент всё равно может не дойти до покупки.
+          </p>
+
+        </div>
+
+
+        <div class="path reveal">
+
+          <div class="path-item">
+
+            <div class="path-number">
+              01
+            </div>
+
+            <div>
+              <h3>
+                Человек вас не находит
+              </h3>
+
+              <p>
+                Он просто не знает, что именно вы можете решить его проблему.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="path-item">
+
+            <div class="path-number">
+              02
+            </div>
+
+            <div>
+              <h3>
+                Находит, но не понимает ценность
+              </h3>
+
+              <p>
+                Предложение может быть хорошим, но не объяснять,
+                почему стоит обратиться именно к вам.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="path-item">
+
+            <div class="path-number">
+              03
+            </div>
+
+            <div>
+              <h3>
+                Сомневается
+              </h3>
+
+              <p>
+                Не хватает доверия, понятного результата,
+                доказательств или ответа на главный вопрос.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="path-item warning">
+
+            <div class="path-number">
+              04
+            </div>
+
+            <div>
+              <h3>
+                Уходит
+              </h3>
+
+              <p>
+                И вы можете даже не узнать, на каком именно этапе это произошло.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         ANALYSIS
+    ======================================================== -->
+
+    <section class="section" id="analysis">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Что мы разбираем
+          </span>
+
+          <h2>
+            Не только соцсети.
+            <br />
+            Вся система целиком.
+          </h2>
+
+          <p>
+            Потому что проблема с продажами далеко не всегда
+            решается ещё одним постом или рекламой.
+          </p>
+
+        </div>
+
+
+        <div class="analysis-grid">
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">🌟</div>
+
+            <h3>
+              Целевая аудитория
+            </h3>
+
+            <p>
+              Кто действительно может купить вашу услугу,
+              чего этот человек хочет и что мешает ему решиться.
+            </p>
+
+          </article>
+
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">🔎</div>
+
+            <h3>
+              Конкуренты
+            </h3>
+
+            <p>
+              Что уже предлагают другие и чем ваше предложение
+              может отличаться.
+            </p>
+
+          </article>
+
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">🎀</div>
+
+            <h3>
+              Предложение
+            </h3>
+
+            <p>
+              Понятно ли человеку, что вы предлагаете,
+              для кого это и зачем ему это нужно.
+            </p>
+
+          </article>
+
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">📍</div>
+
+            <h3>
+              Каналы
+            </h3>
+
+            <p>
+              Где вас могут находить клиенты: Telegram, VK,
+              сайты, карты, объявления и другие площадки.
+            </p>
+
+          </article>
+
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">💓</div>
+
+            <h3>
+              Путь клиента
+            </h3>
+
+            <p>
+              Что происходит между первым знакомством
+              с вами и моментом покупки.
+            </p>
+
+          </article>
+
+
+          <article class="analysis-item reveal">
+
+            <div class="analysis-icon">🧭</div>
+
+            <h3>
+              Точки роста
+            </h3>
+
+            <p>
+              Что имеет смысл изменить сейчас,
+              а на что пока не стоит тратить силы и деньги.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         WHO
+    ======================================================== -->
+
+    <section class="section who">
+
+      <div class="container who-layout">
+
+        <div class="reveal">
+
+          <span class="eyebrow">
+            Возможно, вам знакомо
+          </span>
+
+          <h2 style="margin-top:20px;">
+            «Я знаю,
+            что у меня
+            хороший продукт.
+            Но…»
+          </h2>
+
+        </div>
+
+
+        <div class="who-list reveal">
+
+          <div class="who-item">
+            <span>🌼</span>
+            <p>
+              Я давно предлагаю свои услуги,
+              но клиентов всё равно мало.
+            </p>
+          </div>
+
+          <div class="who-item">
+            <span>📱</span>
+            <p>
+              Веду соцсети, но они почти
+              не приводят заявок.
+            </p>
+          </div>
+
+          <div class="who-item">
+            <span>💸</span>
+            <p>
+              Пробовала рекламу, но не понимаю,
+              почему она не сработала.
+            </p>
+          </div>
+
+          <div class="who-item">
+            <span>🌀</span>
+            <p>
+              Постоянно что-то делаю,
+              но ощущение, что действую хаотично.
+            </p>
+          </div>
+
+          <div class="who-item">
+            <span>🚀</span>
+            <p>
+              Хочу запустить или перезапустить
+              своё дело и не знаю, с чего начать.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         PRICING
+    ======================================================== -->
+
+    <section class="section pricing" id="pricing">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Форматы работы
+          </span>
+
+          <h2>
+            Выбирайте глубину
+            разбора.
+          </h2>
+
+          <p>
+            От одной консультации до полноценного аудита
+            всей системы привлечения клиентов.
+          </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+
+          <!-- START -->
+
+          <article class="price-card reveal">
+
+            <div class="price-name">
+              🐰 Старт
+            </div>
+
+            <div class="price">
+              2 900 ₽
+            </div>
+
+            <p class="price-description">
+              Если вы чувствуете, что с привлечением
+              клиентов что-то не работает.
+            </p>
+
+            <ul class="features">
+
+              <li>60 минут консультации</li>
+              <li>разбор вашей ситуации</li>
+              <li>поиск главных проблем</li>
+              <li>конкретные рекомендации</li>
+
+            </ul>
+
+            <div class="result">
+
+              <strong>Результат</strong>
+
+              Понимаете, где теряются клиенты
+              и что изменить первым.
+
+            </div>
+
+            <a href="#contact" class="button price-button">
+              Выбрать
+            </a>
+
+          </article>
+
+
+          <!-- OPTIMAL -->
+
+          <article class="price-card featured reveal">
+
+            <div class="popular">
+              Оптимальный
+            </div>
+
+            <div class="price-name">
+              🍃 Оптимальный
+            </div>
+
+            <div class="price">
+              4 900 ₽
+            </div>
+
+            <p class="price-description">
+              Если хотите понять не только проблему,
+              но и систему привлечения клиентов.
+            </p>
+
+            <ul class="features">
+
+              <li>всё из «Старт»</li>
+              <li>анализ целевой аудитории</li>
+              <li>анализ конкурентов</li>
+              <li>предложение и позиционирование</li>
+              <li>основные каналы привлечения</li>
+              <li>пошаговый план действий</li>
+
+            </ul>
+
+            <div class="result">
+
+              <strong>Результат</strong>
+
+              Понятная карта:
+              кому, что и где продавать.
+
+            </div>
+
+            <a href="#contact" class="button price-button">
+              Выбрать
+            </a>
+
+          </article>
+
+
+          <!-- FULL -->
+
+          <article class="price-card reveal">
+
+            <div class="price-name">
+              👻 Полный аудит
+            </div>
+
+            <div class="price">
+              8 900 ₽
+            </div>
+
+            <p class="price-description">
+              Если хотите получить целостный разбор
+              проекта и план дальнейших действий.
+            </p>
+
+            <ul class="features">
+
+              <li>всё из «Оптимального»</li>
+              <li>подробный анализ каналов</li>
+              <li>разбор точек контакта</li>
+              <li>карта пути клиента</li>
+              <li>приоритеты действий</li>
+              <li>письменный план</li>
+
+            </ul>
+
+            <div class="result">
+
+              <strong>Результат</strong>
+
+              Целостный план:
+              что делать сейчас, потом и чего не делать.
+
+            </div>
+
+            <a href="#contact" class="button price-button">
+              Выбрать
+            </a>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         PROCESS
+    ======================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="eyebrow">
+            Как всё происходит
+          </span>
+
+          <h2>
+            Без магии.
+            Но с аналитикой.
+          </h2>
+
+        </div>
+
+
+        <div class="process-grid">
+
+          <div class="process-item reveal">
+
+            <div class="process-number">
+              01
+            </div>
+
+            <h3>
+              Вы рассказываете
+            </h3>
+
+            <p>
+              Что продаёте, кому, где ищете клиентов
+              и что уже пробовали.
+            </p>
+
+          </div>
+
+
+          <div class="process-item reveal">
+
+            <div class="process-number">
+              02
+            </div>
+
+            <h3>
+              Я исследую
+            </h3>
+
+            <p>
+              Смотрю аудиторию, конкурентов,
+              предложение и точки контакта.
+            </p>
+
+          </div>
+
+
+          <div class="process-item reveal">
+
+            <div class="process-number">
+              03
+            </div>
+
+            <h3>
+              Находим проблему
+            </h3>
+
+            <p>
+              Отделяем настоящие точки роста
+              от просто «надо больше делать».
+            </p>
+
+          </div>
+
+
+          <div class="process-item reveal">
+
+            <div class="process-number">
+              04
+            </div>
+
+            <h3>
+              Вы получаете план
+            </h3>
+
+            <p>
+              Что менять, что делать первым
+              и на что пока не тратить ресурсы.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         RESULT
+    ======================================================== -->
+
+    <section class="section result-section">
+
+      <div class="container result-layout">
+
+        <div class="reveal">
+
+          <span class="eyebrow">
+            Самое главное
+          </span>
+
+          <h2 style="margin-top:22px;">
+            Я не хочу
+            просто найти
+            <em>проблему.</em>
+          </h2>
+
+        </div>
+
+
+        <div class="result-copy reveal">
+
+          <p>
+            Анализ сам по себе не принесёт вам клиентов.
+            Поэтому моя задача — не оставить вас
+            с красивым отчётом на 30 страниц.
+          </p>
+
+          <p>
+            В конце каждого формата мы приходим
+            к конкретным следующим шагам:
+            <strong>что делать, зачем это делать
+            и что пока можно не делать.</strong>
+          </p>
+
+          <p>
+            Чем глубже аудит — тем подробнее
+            будет этот маршрут.
+          </p>
+
+          <div class="result-stamp">
+
+            <div>
+
+              <span>
+                Понятно,
+                что делать
+              </span>
+
+              <small>
+                вот настоящий результат
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CTA
+    ======================================================== -->
+
+    <section class="cta" id="contact">
+
+      <div class="container">
+
+        <span class="eyebrow" style="color:#d2d9cf;">
+          Готовы разобраться?
+        </span>
+
+        <h2 style="margin-top:22px;">
+          Давайте найдём,
+          где теряются
+          ваши клиенты.
+        </h2>
+
+        <p>
+          Напишите мне, чем вы занимаетесь и что сейчас
+          не получается с привлечением клиентов.
+          Я помогу определить подходящий формат разбора.
+        </p>
+
+        <!-- ЗАМЕНИТЕ ССЫЛКУ НА СВОЙ TELEGRAM -->
+
+        <a
+          class="button"
+          href="https://t.me/audit_clients_bot"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Написать «Хочу аудит» →
+        </a>
+
+        <div class="cta-note">
+          Первые проекты — по стартовой стоимости.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        © 2026 Аудит привлечения клиентов
+      </span>
+
+      <span>
+        Не больше действий. Больше понимания.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================================================
+       JS
+  ========================================================== -->
+
+  <script>
+
+    /*
+      Simple reveal-on-scroll.
+      No libraries.
+    */
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => observer.observe(element));
+
+
+    /*
+      Smooth anchor fallback for older browsers.
+    */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach((link) => {
+
+        link.addEventListener("click", (event) => {
+
+          const targetId = link.getAttribute("href");
+
+          if (!targetId || targetId === "#") return;
+
+          const target = document.querySelector(targetId);
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        });
+
+      });
+
+  </script>
+
+</body>
+</html>
